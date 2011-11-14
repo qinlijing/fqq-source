@@ -1,0 +1,54 @@
+!!!
+-# encoding: utf-8
+%html
+  %head
+    %title Hello World!
+    %meta{:charset=>'utf-8'}
+
+
+    / deck.js presentation stylesheets and js
+    %link{:rel=>'stylesheet', :href=>'deck/core/deck.core.css'}
+    %link{:rel=>'stylesheet', :href=>'deck/extensions/goto/deck.goto.css'}
+    %link{:rel=>'stylesheet', :href=>'deck/extensions/menu/deck.menu.css'}
+    %link{:rel=>'stylesheet', :href=>'deck/extensions/navigation/deck.navigation.css'}
+    %link{:rel=>'stylesheet', :href=>'deck/extensions/status/deck.status.css'}
+    %link{:rel=>'stylesheet', :href=>'deck/extensions/hash/deck.hash.css'}
+
+    %link#stlye-theme-link{:rel=>'stylesheet', :href=>'deck/themes/style/swiss.css'}
+    %link#transition-theme-link{:rel=>'stylesheet', :href=>'deck/themes/transition/horizontal-slide.css'}
+
+    %link{:rel=>'stylesheet', :href=>'introduction.css'}
+  
+    %script{:src=>'deck/modernizr.custom.js'}      
+
+  %body.deck-container
+    =yield
+
+    %a.deck-prev-link{:href=>'#', :title=>'Previous'} &#8592;
+    %a.deck-next-link{:href=>'#', :title=>'Next'} &#8594;
+
+    %p.deck-status
+      %span.deck-status-current
+      %span.deck-status-total
+
+    %form.goto-form{:action=>'.',:method=>'get'}
+      %label{:for=>'goto-slide'} Go to slide:
+      %input#goto-slide{:type=>'text',:name=>'slidenum',:list=>'goto-datalist'}
+      %datalist#goto-datalist
+      %input{:type=>'submit',:value=>'Go'}
+
+    %a.deck-permalink{:title=>'Permalink to this slide'} #
+
+    %script{:src=>"//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"}
+    %script
+      window.jQuery || document.write('<script src="deck/jquery-1.7.min.js"><\/script>')
+
+    %script{:src=>'deck/core/deck.core.js'} 
+    %script{:src=>'deck/extensions/hash/deck.hash.js'}
+    %script{:src=>'deck/extensions/menu/deck.menu.js'}
+    %script{:src=>'deck/extensions/goto/deck.goto.js'}
+    %script{:src=>'deck/extensions/status/deck.status.js'}
+    %script{:src=>'deck/extensions/navigation/deck.navigation.js'}
+    
+    %script{:src=>'introduction.js'}
+
