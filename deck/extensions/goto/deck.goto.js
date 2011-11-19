@@ -48,8 +48,9 @@ the deck container.
 		selectors: {
 			gotoDatalist: '#goto-datalist',
 			gotoForm: '.goto-form',
-			gotoInput: '#goto-slide'
-		},
+			gotoInput: '#goto-slide',
+	    gotoLink: '.goto-form-link'
+    },
 		
 		keys: {
 			goto: 71 // g
@@ -101,6 +102,12 @@ the deck container.
 			}
 		});
 		
+    $('.goto-form-link')
+		.bind('click', function(e) {
+			e.preventDefault();
+			$[deck]('toggleGoTo');
+		});
+
 		/* Populate datalist */
 		$.each($[deck]('getSlides'), function(i, $slide) {
 			var id = $slide.attr('id');

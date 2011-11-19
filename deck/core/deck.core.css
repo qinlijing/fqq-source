@@ -32,7 +32,7 @@ html {
 .deck-container article, .deck-container aside, .deck-container canvas, .deck-container details, .deck-container figcaption, .deck-container figure,
 .deck-container footer, .deck-container header, .deck-container hgroup, .deck-container menu, .deck-container nav, .deck-container section, .deck-container summary,
 .deck-container time, .deck-container mark, .deck-container audio, .deck-container video {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   font-size: 100%;

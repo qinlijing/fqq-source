@@ -1,8 +1,8 @@
+-# coding: utf-8
 !!!
--# encoding: utf-8
 %html
   %head
-    %title Hello World!
+    %title FQQ
     %meta{:charset=>'utf-8'}
 
 
@@ -15,7 +15,7 @@
     %link{:rel=>'stylesheet', :href=>'deck/extensions/hash/deck.hash.css'}
 
     %link#stlye-theme-link{:rel=>'stylesheet', :href=>'deck/themes/style/swiss.css'}
-    %link#transition-theme-link{:rel=>'stylesheet', :href=>'deck/themes/transition/horizontal-slide.css'}
+    %link#transition-theme-link{:rel=>'stylesheet', :href=>'deck/themes/transition/fade.css'}
 
     %link{:rel=>'stylesheet', :href=>'introduction.css'}
   
@@ -31,10 +31,24 @@
       %span.deck-status-current
       %span.deck-status-total
 
+    /#decorator-top
+    /  %img{:src=>'images/decorate.png', :width=>'80%'}
+
+    /#decorator-bottom
+    /  %img{:src=>'images/decorate-bottom.png', :width=>'80%'}
+
+    %nav#helpers
+      %a{:href=>"#toc"}
+        目录
+      %a.goto-form-link{:href=>"#"}
+        跳转 
+
     %form.goto-form{:action=>'.',:method=>'get'}
-      %label{:for=>'goto-slide'} Go to slide:
+      转至:
+      /%label{:for=>'goto-slide'} 转至:
       %input#goto-slide{:type=>'text',:name=>'slidenum',:list=>'goto-datalist'}
       %datalist#goto-datalist
+      页  
       %input{:type=>'submit',:value=>'Go'}
 
     %a.deck-permalink{:title=>'Permalink to this slide'} #

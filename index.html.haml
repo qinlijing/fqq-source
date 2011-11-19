@@ -1,0 +1,11 @@
+-# coding: utf-8
+%section.slide#open
+  %h1
+    方庆庆
+
+%section.slide#toc
+  %h2
+    目录
+  = File.open('toc.html').read.force_encoding('utf-8')
+
+= File.open('novel.html').read.force_encoding('utf-8') 
