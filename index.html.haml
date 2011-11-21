@@ -1,11 +1,20 @@
 -# coding: utf-8
 %section.slide#open
-  %h1
-    方庆庆
+  %img#cover{:src=>'images/cover.jpg', :height=>'550px'}
+
+/%section.slide#open2
+/  #cover2
+/    %p#cover2-title 
+/      方庆庆
+/    %p#cover2-author
+/      秦利静
+/    %img#cover2-img{:src=>'images/cover2.jpg', :height=>'200px'}
 
 %section.slide#toc
   %h2
     目录
   = File.open('toc.html').read.force_encoding('utf-8')
 
-= File.open('novel.html').read.force_encoding('utf-8') 
+= File.open('novel.html').read.force_encoding('utf-8')
+
+

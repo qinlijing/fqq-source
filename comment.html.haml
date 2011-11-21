@@ -1,0 +1,30 @@
+-# coding: utf-8
+!!!
+%html
+  %head
+    %title 方庆庆
+    %meta{:name=>"description", 
+          :content=>"在线阅读网络小说《方庆庆》，秦利静著"}
+    %meta{:charset=>'utf-8'}
+
+    %link{:rel=>'stylesheet', :href=>'comment.css'}
+    %link{:rel=>'shortcut icon', :href=>'favicon.ico'}
+
+  %body#comment-board  
+    %h2
+      留言板
+    #disqus_thread
+      :javascript
+        var disqus_shortname = 'qlj-fqq'; // required: replace example with your forum shortname
+        var disqus_url = 'http://fqq.xiao.bz/#comment';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      %noscript
+        Please enable javascript to view the comments
+    %nav#helpers
+      %a{:href=>"index.html#toc"}
+        目录
+

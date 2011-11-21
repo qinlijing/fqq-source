@@ -2,6 +2,7 @@
 import re
 
 totalpages = 0
+slidepages = 0
 
 def est_lineno(line):
   lineno = len(line.decode("utf-8"))
@@ -11,12 +12,26 @@ def est_lineno(line):
     count += 1
   return count
 
+def init_toc(indexfile):
+  indexfile.write('<p><a href="#open">封面</a></p>\n')
+
+def writetoc(indexfile, chapmap):
+  indexfile.write('<ul class="table-of-content">\n')
+  for name, page, href in chapmap:
+    indexfile.write('<li><a href="#%s">%s</a><em>%s</em></li>\n' % (href, name, page))
+  indexfile.write('</ul>\n')
+
 def pagination(fn, outfile, indexfile, threshold = 25):
+  global slidepages
+
+  chapmap = [("封面", "1", "open")]
+
   pgcount = 0
   chapcount = 0
   chapno = '0'
   secno = '0'
 
+  slidepages = 2
   chapre = re.compile('(第.*?章)(.*)')
   secre = re.compile('第(.*?)节')
 
@@ -36,13 +51,17 @@ def pagination(fn, outfile, indexfile, threshold = 25):
         chapno = line
         secno = '0'
         chapcount += 1
+        slidepages += 1
         outfile.write('<section class="slide" id="chap%d">\n' % chapcount)
         #outfile.write('<img src="images/decorate.png" width="50px" id="decorator-top"/>\n')
         outfile.write('<div id="decorator-top"><img src="images/decorate.png" width="120px"/></div>\n')
         outfile.write('<div id="decorator-bottom"><img src="images/decorate-bottom.png" width="120px"/></div>\n')
         outfile.write('<h1>%s<br>%s</h1>\n' % (m.group(1),m.group(2)))
         outfile.write('</section>\n')
-        indexfile.write('<p><a href="#chap%d">%s</a></p>\n' % (chapcount, chapno))
+
+        chapmap.append((chapno, str(slidepages), "chap%d" % chapcount))
+
+        #indexfile.write('<p><a href="#chap%d">%s</a></p>\n' % (chapcount, chapno))
         continue
 
       m = secre.match(line)
@@ -68,10 +87,17 @@ def pagination(fn, outfile, indexfile, threshold = 25):
         currentlines = []
         wordcount = 0
         linecount = 0
+
+  if linecount> 0:
+    writepage(outfile,currentlines,pgcount,chapno,secno)
+  writetoc(indexfile, chapmap)
   outfile.close()
 
 def writepage(outfile, lines, pgcount, chapno, secno):
   global totalpages
+  global slidepages
+
+  slidepages += 1
   outfile.write('<section class="slide" id="pg%d">\n' % totalpages)
   totalpages += 1
   outfile.write('<h2>%s:%s</h2>\n' % (chapno, secno))

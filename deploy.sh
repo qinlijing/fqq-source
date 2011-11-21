@@ -1,7 +1,10 @@
 #!/bin/sh
-cp -r public/ ../qinlijing.github.com/
-
 cd ../qinlijing.github.com
+git reset --hard HEAD
+git rm -r .
+
+cp -r ../ebook/public/ .
+
 git add .
-git commit -am "automatic commit"
+git commit -a
 git push -u origin master

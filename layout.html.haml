@@ -2,9 +2,11 @@
 !!!
 %html
   %head
-    %title FQQ
-    %meta{:charset=>'utf-8'}
+    %title 方庆庆
+    %meta{:name=>"description", 
+          :content=>"在线阅读网络小说《方庆庆》，秦利静著"}
 
+    %meta{:charset=>'utf-8'}
 
     / deck.js presentation stylesheets and js
     %link{:rel=>'stylesheet', :href=>'deck/core/deck.core.css'}
@@ -18,10 +20,14 @@
     %link#transition-theme-link{:rel=>'stylesheet', :href=>'deck/themes/transition/fade.css'}
 
     %link{:rel=>'stylesheet', :href=>'introduction.css'}
+    %link{:rel=>'icon', :href=>'favicon.ico', :type=>'image/x-icon'}
   
     %script{:src=>'deck/modernizr.custom.js'}      
 
   %body.deck-container
+    /:javascript
+    /  if(navigator.userAgent.indexOf('MSIE')!=-1){location.replace('index-ie.html');} 
+
     =yield
 
     %a.deck-prev-link{:href=>'#', :title=>'Previous'} &#8592;
@@ -42,6 +48,8 @@
         目录
       %a.goto-form-link{:href=>"#"}
         跳转 
+      %a{:href=>"comment.html"}
+        留言
 
     %form.goto-form{:action=>'.',:method=>'get'}
       转至:
@@ -51,6 +59,7 @@
       页  
       %input{:type=>'submit',:value=>'Go'}
 
+ 
     %a.deck-permalink{:title=>'Permalink to this slide'} #
 
     %script{:src=>"//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"}
